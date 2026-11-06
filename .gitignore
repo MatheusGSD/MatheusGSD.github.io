@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+# protótipos e pesquisa ficam fora do main (vão para o ramo "prototipos")
+_prototipo_inicio/
+_referencias/
+_folha_prints.png
+ferramentas/_capturas/
+ferramentas/_og.html

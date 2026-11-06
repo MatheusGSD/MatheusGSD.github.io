@@ -1,0 +1,18 @@
+---
+import Base from "../../layouts/Base.astro";
+import { SITE } from "../../site";
+const redes = SITE.contatos.filter((c) => c.url && c.url.startsWith("http"));
+---
+<Base titulo="About" descricao={SITE.bioEn} atual="en" lang="en">
+  <article class="prosa">
+    {import.meta.env.DEV && <p class="aviso">DRAFT (only shown in dev mode): for Matheus to review.</p>}
+    <h1>About</h1>
+    <p class="lede">I'm Matheus Dalmolin. I work in applied artificial intelligence and build dashboards and analyses with public data.</p>
+    <p>I like questions that open data can answer: where a congressman's votes came from, whether a flood changed how a city voted, when a footballer will reach his 1,000th goal. I write about the method behind each answer, including when it fails.</p>
+    <p>On the night of October 25, 2026, I followed Brazil's presidential runoff live with a <a href="https://apuracao.dalmolin.dev/">dashboard</a> that compared each municipality with the same polling stations in the first round. With 2% of the ballots counted, it projected Lula at 51.79%, the same as the final result. I wrote about it (in Portuguese) in <a href="/textos/swing-simples-segundo-turno/" hreflang="pt-BR">O swing simples basta para projetar um 2º turno?</a></p>
+    <p>I'm also a teaching assistant in an Artificial Intelligence course.</p>
+    <p>Most of what I publish is in Portuguese.</p>
+    <h2>Contact</h2>
+    <p>Email <a href="mailto:contato@dalmolin.dev">contato@dalmolin.dev</a>, or find me on {redes.map((r, i) => <>{i > 0 && (i === redes.length - 1 ? " and " : ", ")}<a href={r.url} rel="me">{r.nome}</a></>)}.</p>
+  </article>
+</Base>

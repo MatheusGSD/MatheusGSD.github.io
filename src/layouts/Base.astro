@@ -1,0 +1,52 @@
+---
+import "@fontsource-variable/archivo/wdth.css";
+import "@fontsource-variable/source-sans-3";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-mono/500.css";
+import "../styles/global.css";
+import Lado from "../components/Lado.astro";
+import { SITE } from "../site";
+
+interface Props {
+  titulo?: string;
+  descricao?: string;
+  atual?: "tudo" | "projeto" | "texto" | "sobre" | "en";
+  lang?: "pt-BR" | "en";
+  imagem?: string;
+}
+const { titulo, descricao = SITE.bio, atual = "tudo", lang = "pt-BR", imagem = "/og.png" } = Astro.props;
+const tituloCompleto = titulo ? `${titulo} · ${SITE.nome}` : SITE.nome;
+const canonica = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{tituloCompleto}</title>
+  <meta name="description" content={descricao}>
+  <link rel="canonical" href={canonica}>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title={`Textos · ${SITE.nome}`} href="/rss.xml">
+  <link rel="sitemap" href="/sitemap-index.xml">
+  <meta property="og:title" content={titulo ?? SITE.nome}>
+  <meta property="og:description" content={descricao}>
+  <meta property="og:url" content={canonica}>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content={lang === "en" ? "en_US" : "pt_BR"}>
+  <meta property="og:site_name" content={SITE.nome}>
+  <meta property="og:image" content={new URL(imagem, Astro.site)}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111317" media="(prefers-color-scheme: dark)">
+</head>
+<body>
+  <a class="pular" href="#conteudo">{lang === "en" ? "Skip to content" : "Pular para o conteúdo"}</a>
+  <div class="grade">
+    <Lado atual={atual} lang={lang} />
+    <main class="principal" id="conteudo">
+      <slot />
+    </main>
+  </div>
+</body>
+</html>

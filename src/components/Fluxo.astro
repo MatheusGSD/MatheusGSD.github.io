@@ -1,0 +1,47 @@
+---
+// Tudo o que foi publicado, do mais recente ao mais antigo. Os filtros são páginas de verdade (/, /projetos/, /textos/).
+import { itens, dataCurta, dataIso } from "../site";
+
+interface Props {
+  filtro: "tudo" | "projeto" | "texto";
+}
+const { filtro } = Astro.props;
+const lista = await itens(filtro);
+const FILTROS = [
+  { k: "tudo", nome: "Tudo", href: "/" },
+  { k: "projeto", nome: "Projetos", href: "/projetos/" },
+  { k: "texto", nome: "Textos", href: "/textos/" },
+];
+---
+<nav class="filtros" aria-label="Filtro">
+  <span class="eyebrow">Publicado</span>
+  {FILTROS.map((f) => <a href={f.href} aria-current={filtro === f.k ? "page" : undefined}>{f.nome}</a>)}
+</nav>
+<div class="fluxo">
+  {lista.map((i, n) => (
+    <a class="item" href={i.url}>
+      <div class="txt">
+        <div class="tipo">
+          <b class={i.k}>{i.rotulo}</b>
+          <time datetime={dataIso(i.data)}>{dataCurta(i.data)}</time>
+          {i.registro && <small>· registro do dia</small>}
+        </div>
+        <h2>{i.titulo}</h2>
+        <p>{i.resumo}</p>
+        <span class="dom">{i.dominio}</span>
+      </div>
+      {i.print ? (
+        <div class="shot">
+          <picture>
+            <source media="(prefers-color-scheme: dark)" srcset={`/img/projetos/${i.print}-escuro.webp`} />
+            <img src={`/img/projetos/${i.print}-claro.webp`} alt="" width="960" height="600" loading={n < 2 ? "eager" : "lazy"} decoding="async" />
+          </picture>
+        </div>
+      ) : i.imagem ? (
+        <div class="shot claro">
+          <img src={i.imagem} alt="" width="1200" height="630" loading={n < 2 ? "eager" : "lazy"} decoding="async" />
+        </div>
+      ) : null}
+    </a>
+  ))}
+</div>

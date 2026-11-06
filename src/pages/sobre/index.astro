@@ -1,0 +1,17 @@
+---
+import Base from "../../layouts/Base.astro";
+import { SITE } from "../../site";
+const redes = SITE.contatos.filter((c) => c.url && c.url.startsWith("http"));
+---
+<Base titulo="Sobre" descricao="Quem é Matheus Dalmolin." atual="sobre">
+  <article class="prosa">
+    {import.meta.env.DEV && <p class="aviso">RASCUNHO (este aviso só aparece no modo de desenvolvimento): texto para o Matheus revisar. Falta a foto e o endereço do LinkedIn.</p>}
+    <h1>Sobre</h1>
+    <p class="lede">Sou Matheus Dalmolin. Trabalho com inteligência artificial aplicada e faço painéis e análises com dados públicos.</p>
+    <p>Gosto de perguntas que dá para responder com dados abertos: de onde vieram os votos de um deputado, se uma enchente mudou o voto de uma cidade, quando um jogador chega ao gol 1000. Escrevo sobre o método por trás de cada resposta, inclusive quando ele erra.</p>
+    <p>Na noite de 25 de outubro de 2026, acompanhei o 2º turno ao vivo com um <a href="https://apuracao.dalmolin.dev/">painel</a> que comparava cada município com as mesmas seções no 1º turno. Com 2% das urnas apuradas, ele projetava Lula com 51,79%, o mesmo número do resultado final. Contei como foi no artigo <a href="/textos/swing-simples-segundo-turno/">O swing simples basta para projetar um 2º turno?</a></p>
+    <p>Também faço estágio docência numa disciplina de Inteligência Artificial.</p>
+    <h2>Contato</h2>
+    <p>O jeito mais rápido é o e-mail <a href="mailto:contato@dalmolin.dev">contato@dalmolin.dev</a>. Também estou no {redes.map((r, i) => <>{i > 0 && (i === redes.length - 1 ? " e no " : ", no ")}<a href={r.url} rel="me">{r.nome}</a></>)}.</p>
+  </article>
+</Base>

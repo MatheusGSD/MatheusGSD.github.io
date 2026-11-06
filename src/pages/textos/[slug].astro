@@ -1,0 +1,21 @@
+---
+// Textos escritos em Markdown neste repo (sem `url` no cabeçalho). Os que têm `url` são HTML pronto em public/textos/.
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { dataCurta, dataIso } from "../../site";
+
+export async function getStaticPaths() {
+  const textos = await getCollection("textos", (t) => !t.data.url && !t.data.rascunho);
+  return textos.map((t) => ({ params: { slug: t.id }, props: { t } }));
+}
+const { t } = Astro.props;
+const { Content } = await render(t);
+---
+<Base titulo={t.data.titulo} descricao={t.data.lede} atual="texto" imagem={t.data.imagem}>
+  <article class="prosa">
+    <span class="eyebrow">{t.data.tipo} · <time datetime={dataIso(t.data.data)}>{dataCurta(t.data.data)}</time></span>
+    <h1>{t.data.titulo}</h1>
+    <p class="lede">{t.data.lede}</p>
+    <Content />
+  </article>
+</Base>

@@ -3,35 +3,25 @@
 import { SITE, contagens } from "../site";
 
 interface Props {
-  atual: "tudo" | "projeto" | "texto" | "sobre" | "en";
-  lang: "pt-BR" | "en";
+  atual: "tudo" | "projeto" | "texto" | "sobre";
 }
-const { atual, lang } = Astro.props;
+const { atual } = Astro.props;
 const n = await contagens();
-const en = lang === "en";
-const menu = en
-  ? [
-      { nome: "Projects", href: "/projetos/", nota: String(n.projetos), k: "projeto" },
-      { nome: "Writing", href: "/textos/", nota: String(n.textos), k: "texto" },
-      { nome: "About", href: "/en/", nota: "→", k: "en" },
-    ]
-  : [
-      { nome: "Projetos", href: "/projetos/", nota: String(n.projetos), k: "projeto" },
-      { nome: "Textos", href: "/textos/", nota: String(n.textos), k: "texto" },
-      { nome: "Sobre", href: "/sobre/", nota: "→", k: "sobre" },
-    ];
-const contatos = SITE.contatos.filter((c) => c.url);
+const menu = [
+  { nome: "Projetos", href: "/projetos/", nota: String(n.projetos), k: "projeto" },
+  { nome: "Textos", href: "/textos/", nota: String(n.textos), k: "texto" },
+  { nome: "Sobre", href: "/sobre/", nota: "→", k: "sobre" },
+];
 ---
 <aside class="lado">
   <a class="nome" href="/">Matheus<br>Dalmolin</a>
-  <p class="bio">{en ? SITE.bioEn : SITE.bio}</p>
-  <nav aria-label={en ? "Sections" : "Seções"}>
+  <p class="bio">{SITE.bio}</p>
+  <nav aria-label="Seções">
     {menu.map((m) => (
       <a href={m.href} aria-current={atual === m.k ? "page" : undefined}>{m.nome} <span>{m.nota}</span></a>
     ))}
   </nav>
   <div class="contatos">
-    {contatos.map((c) => <a href={c.url} rel={c.url.startsWith("http") ? "me" : undefined}>{c.nome}</a>)}
+    {SITE.contatos.map((c) => <a href={c.url} rel={c.url.startsWith("http") ? "me" : undefined}>{c.nome}</a>)}
   </div>
-  {en ? <a class="lang" href="/" hreflang="pt-BR">Ler em português →</a> : <a class="lang" href="/en/" hreflang="en">About me in English →</a>}
 </aside>

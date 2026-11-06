@@ -40,8 +40,6 @@ p { margin: 0; }
 .contatos { display: flex; flex-direction: column; gap: .3rem; margin-top: auto; font-size: .9rem; }
 .contatos a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--rule); width: fit-content; }
 .contatos a:hover { color: var(--ink); border-color: var(--ink); }
-.lado .lang { font: 500 .78rem/1.6 var(--f-mono); color: var(--ink-3); text-decoration: none; }
-.lado .lang:hover { color: var(--accent); }
 
 /* ---------- fluxo ---------- */
 .filtros { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; margin-bottom: 1.8rem; }

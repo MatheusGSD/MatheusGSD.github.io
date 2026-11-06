@@ -11,7 +11,7 @@ from playwright.sync_api import sync_playwright
 RAIZ = Path(__file__).resolve().parent.parent
 DIST = RAIZ / "dist"
 SAIDA = RAIZ / "ferramentas" / "_capturas"
-PAGINAS = ["/", "/projetos/", "/textos/", "/sobre/", "/en/", "/textos/swing-simples-segundo-turno/", "/nao-existe/"]
+PAGINAS = ["/", "/projetos/", "/textos/", "/sobre/", "/textos/swing-simples-segundo-turno/", "/nao-existe/"]
 PORTA = 4329
 
 

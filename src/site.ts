@@ -4,13 +4,12 @@ import { getCollection } from "astro:content";
 export const SITE = {
   nome: "Matheus Dalmolin",
   url: "https://dalmolin.dev",
-  // RASCUNHO: revisar com o usuário.
-  bio: "Faço painéis e análises com dados públicos (eleições, cidades, futebol) e escrevo sobre o método por trás dos números. Trabalho com inteligência artificial aplicada.",
-  bioEn: "I build dashboards and analyses with public data (elections, cities, football) and write about the method behind the numbers. I work in applied artificial intelligence.",
+  // Bio do X do usuário (06/11/2026), escolhida por ele para o site.
+  bio: "Construo ferramentas com IA e faço análises com dados públicos. Agentes, mapas, simulações e o que mais der vontade de entender.",
   contatos: [
     { nome: "contato@dalmolin.dev", url: "mailto:contato@dalmolin.dev" },
     { nome: "X", url: "https://x.com/MatheusDalmolin" },
-    { nome: "LinkedIn", url: "" }, // FALTA: endereço do perfil
+    { nome: "LinkedIn", url: "https://www.linkedin.com/in/matheus-dalmolin/" },
     { nome: "Threads", url: "https://www.threads.com/@dalmolinmatheuss" },
     { nome: "GitHub", url: "https://github.com/MatheusGSD" },
   ],

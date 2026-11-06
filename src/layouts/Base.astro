@@ -10,16 +10,15 @@ import { SITE } from "../site";
 interface Props {
   titulo?: string;
   descricao?: string;
-  atual?: "tudo" | "projeto" | "texto" | "sobre" | "en";
-  lang?: "pt-BR" | "en";
+  atual?: "tudo" | "projeto" | "texto" | "sobre";
   imagem?: string;
 }
-const { titulo, descricao = SITE.bio, atual = "tudo", lang = "pt-BR", imagem = "/og.png" } = Astro.props;
+const { titulo, descricao = SITE.bio, atual = "tudo", imagem = "/og.png" } = Astro.props;
 const tituloCompleto = titulo ? `${titulo} · ${SITE.nome}` : SITE.nome;
 const canonica = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,7 +32,7 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:description" content={descricao}>
   <meta property="og:url" content={canonica}>
   <meta property="og:type" content="website">
-  <meta property="og:locale" content={lang === "en" ? "en_US" : "pt_BR"}>
+  <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content={SITE.nome}>
   <meta property="og:image" content={new URL(imagem, Astro.site)}>
   <meta name="twitter:card" content="summary_large_image">
@@ -41,9 +40,9 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
   <meta name="theme-color" content="#111317" media="(prefers-color-scheme: dark)">
 </head>
 <body>
-  <a class="pular" href="#conteudo">{lang === "en" ? "Skip to content" : "Pular para o conteúdo"}</a>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
   <div class="grade">
-    <Lado atual={atual} lang={lang} />
+    <Lado atual={atual} />
     <main class="principal" id="conteudo">
       <slot />
     </main>

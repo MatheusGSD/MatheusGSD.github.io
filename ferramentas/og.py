@@ -22,7 +22,7 @@ p {{ margin: 0; font: 400 34px/1.35 S; color: #4a505b; max-width: 960px; }}
 .pe b {{ color: #0f8a7e; font-weight: 500; }}
 </style></head><body><div class="c">
 <h1>Matheus<br>Dalmolin</h1>
-<p>Painéis e análises com dados públicos, e o método por trás dos números.</p>
+<p>Construo ferramentas com IA e faço análises com dados públicos.</p>
 <span></span>
 <div class="pe"><b>dalmolin.dev</b><span>projetos · textos</span></div>
 </div></body></html>"""

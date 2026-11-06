@@ -1,7 +1,7 @@
 # dalmolin.dev — notas para o agente
 
-Site pessoal de Matheus Dalmolin (projetos, textos, sobre; currículo e "fora do trabalho" virão depois). O usuário escreve em
-português; responda em português. Plano e decisões (06/11/2026) na memória `site-pessoal-dalmolin-dev`.
+Site pessoal de Matheus Dalmolin (projetos, textos, sobre; currículo e hobbies virão depois). Só em português por enquanto
+(decisão de 06/11: sem página em inglês). O usuário escreve em português; responda em português. Plano e decisões (06/11/2026) na memória `site-pessoal-dalmolin-dev`.
 
 ## Como funciona
 - Astro 7, estático. `npm run build` → `dist/`; publicação pelo GitHub Actions (`.github/workflows/deploy.yml`) no repo
@@ -18,9 +18,9 @@ português; responda em português. Plano e decisões (06/11/2026) na memória `
   usuário com domínio). Estar no ar não é estar na lista: a lista é `src/content/projetos/`.
 
 ## Conferência
-`npm run build && python ferramentas/confere.py`: 7 páginas × (1280/390 px, claro/escuro), erros de console, rolagem lateral
+`npm run build && python ferramentas/confere.py`: 6 páginas × (1280/390 px, claro/escuro), erros de console, rolagem lateral
 e links internos quebrados; capturas em `ferramentas/_capturas/`. `python ferramentas/og.py` refaz `public/og.png`.
-Textos marcados como RASCUNHO em `src/site.ts` e nas páginas `sobre`/`en` só mostram o aviso no modo `astro dev`.
+A bio (`src/site.ts`) é a do X do usuário, escolhida por ele. Não usar o Lattes (desatualizado, segundo ele).
 
 ## Fora do main
 `_prototipo_inicio/` (protótipos A/B/C da página inicial) e `_referencias/` (quadros de referências que o usuário rejeitou)

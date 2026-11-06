@@ -305,8 +305,8 @@ body.x .pfig { width: 720px; height: 900px; max-width: none; padding: 34px 34px 
 </figure><div class="prosa">
 <ul>
 <li><strong>Até 5% apurado:</strong> erro médio de 0,11 ponto no meu painel e de 0,09 no modelo de Mahlmeister. Nesse trecho, os dois partiam do 1º turno de 2026.</li>
-<li><strong>De 5% a 8%:</strong> meu painel oscilou, com 0,25 em média e pontos a quase 0,5 abaixo do resultado. O de Mahlmeister ficou em 0,03.</li>
-<li><strong>De 8% a 30%:</strong> 0,13 ponto no meu painel e 0,37 no de Mahlmeister, abaixo do resultado em todos os pontos (de 0,19 a 0,56). O site do modelo registra: "Entre 8% e 30% ficou de 0,3 a 0,6 ponto abaixo do resultado" (<a href="https://projecao.2026elections.workers.dev">Como foi</a>). A diferença está no eixo: o site mede o trecho pelo % do eleitorado, o que deixa de fora a leitura de 0,19; as demais vão de 0,26 a 0,56.</li>
+<li><strong>De 5% a 8%:</strong> meu painel oscilou, com 0,25 em média e leituras a quase 0,5 abaixo do resultado. O de Mahlmeister ficou em 0,03.</li>
+<li><strong>De 8% a 30%:</strong> 0,13 ponto no meu painel e 0,37 no de Mahlmeister, abaixo do resultado em todas as leituras (de 0,19 a 0,56). O site do modelo registra: "Entre 8% e 30% ficou de 0,3 a 0,6 ponto abaixo do resultado" (<a href="https://projecao.2026elections.workers.dev">Como foi</a>). A diferença está no eixo: o site mede o trecho pelo % do eleitorado, o que deixa de fora a leitura de 0,19; as demais vão de 0,26 a 0,56.</li>
 <li><strong>De 30% a 50%:</strong> 0,08 no meu painel e 0,16 no de Mahlmeister.</li>
 <li><strong>A partir de 50%:</strong> os dois a cerca de 0,1 ponto ou menos, com erro médio de 0,01.</li>
 </ul>
@@ -328,15 +328,15 @@ body.x .pfig { width: 720px; height: 900px; max-width: none; padding: 34px 34px 
 </tbody>
 </table></div>
 
-<p><em>Erro médio da projeção de Lula, em pontos, do mesmo swing simples com cada referência, medido em 2, 3 e 5%; 8, 10, 15, 20 e 30%; e 50, 70 e 90% apurado. ↑ acima do resultado e ↓ abaixo em todos os pontos do trecho; sem seta, o sinal muda. Para comparar: o modelo de Mahlmeister ficou 0,37 abaixo entre 8% e 30%.</em></p>
-<p>A tabela diz duas coisas. A primeira: até 5%, o 1º turno é a referência melhor nos dois pesos; depois, depende do peso. Com o voto contado, as duas empatam. Com os votos finais, ele continua errando menos, e entre 8% e 30%, de 60% a 87% do erro com 2022, conforme o ponto, vem dos municípios ainda sem urna, que recebem a mudança medida no resto do estado. Isso sugere que, em quatro anos, o voto mudou de modo desigual dentro de cada estado; em três semanas, quase não.</p>
+<p><em>Erro médio da projeção de Lula, em pontos, do mesmo swing simples com cada referência, medido em 2, 3 e 5%; 8, 10, 15, 20 e 30%; e 50, 70 e 90% apurado. ↑ acima do resultado e ↓ abaixo em todas as medições do trecho; sem seta, o sinal muda. Para comparar: o modelo de Mahlmeister ficou 0,37 abaixo entre 8% e 30%.</em></p>
+<p>A tabela diz duas coisas. A primeira: até 5%, o 1º turno é a referência melhor nos dois pesos; depois, depende do peso. Com o voto contado, as duas empatam. Com os votos finais, ele continua errando menos, e entre 8% e 30%, de 60% a 87% do erro com 2022, conforme o % apurado, vem dos municípios ainda sem urna, que recebem a mudança medida no resto do estado. Isso sugere que, em quatro anos, o voto mudou de modo desigual dentro de cada estado; em três semanas, quase não.</p>
 <p>A segunda: nos dois pesos, com 2022 o swing simples erra para cima entre 8% e 30%, e o modelo de Mahlmeister errou para baixo. Então a escolha de 2022, aplicada ao swing simples, não explica o desvio dele. O Observatório de Gil Miranda, outro painel que projetou a noite ao vivo, aponta na mesma direção: não usa 2022 como referência, compara cada seção com o 1º turno e também ficou abaixo do resultado em todas as leituras entre 7% e 30%, de 0,18 a 0,44 ponto (<a href="https://apuracao-tse-2026.pages.dev">Observatório</a>). O teste mostra só o que não explica o desvio. O motivo, só Mahlmeister pode dizer: o código dele é privado.</p>
 <blockquote>
 <p><strong>Como o teste foi feito.</strong> Pareamento exato por UF, município, zona e seção: 92% das seções de 2026 têm par em 2022. Município com seção apurada recebe o swing medido nas próprias seções; sem seção, o swing da UF.</p>
 <p>O teste não reproduz o pareamento por local, a razão log, a regressão hierárquica, o uso do 1º turno nos municípios já em apuração nem as pesquisas. O script está no <a href="https://apuracao.dalmolin.dev/estudos/dalmolin_x_mahlmeister.html">apêndice técnico</a>.</p>
 </blockquote>
 </div></section><section id="saber-o-quanto-se-sabe"><header><h2>Saber o quanto se sabe</h2></header><div class="prosa">
-<p>Na margem de erro, os dois métodos foram para lados opostos, e cada um acertou numa coisa diferente.</p>
+<p>Nas faixas de incerteza, os dois métodos foram para lados opostos, e cada um acertou numa coisa diferente.</p>
 </div><figure class="fig" id="fig-faixas"><figcaption>Uma faixa disse cedo quem vence; a outra quase nunca deixou o resultado de fora<small>Faixas de 95% da projeção de Lula: Dalmolin = meu painel (gravado na noite de 25/10/2026, sem 9 leituras) e série do método planejado de Mahlmeister, que o site do modelo mostra hoje. De 2% a 100% das seções, escala logarítmica, mesma escala nos dois painéis.</small></figcaption>
 <div class="dupla">
   <div class="painel"><h3><i class="sw sw-n"></i>Dalmolin <small>faixa de erro histórico</small></h3><div class="chart" data-s="n"></div></div>
@@ -344,7 +344,7 @@ body.x .pfig { width: 720px; height: 900px; max-width: none; padding: 34px 34px 
 </div>
 </figure><div class="prosa">
 <p>A faixa de Mahlmeister mede a incerteza reamostrando municípios, com largura média de 0,35 ponto de 5% a 50% apurado. Ela ficou toda acima de 50% desde a primeira projeção, às 19h21, e nunca apontou o vencedor errado. O custo: em 33 de 97 leituras, entre 8,6% e 56,8% apurado, deixou o número final de fora. Ali, o erro do modelo foi maior que a faixa.</p>
-<p>A faixa do meu painel mede a incerteza pelo erro de eleições passadas no mesmo ponto da apuração. Teve largura média de 8,1 pontos, de 5% a 50% apurado, e conteve o resultado em todas as leituras menos a última, quando já tinha largura zero e a diferença era de arredondamento. O custo: só ficou toda acima de 50% com 41,6% das seções. É larga no presidente porque a calibrei em 28 reproduções de 2018 e 2022, 26 delas de governador, onde o erro é maior.</p>
+<p>A faixa do meu painel mede a incerteza pelo erro de eleições passadas no mesmo % apurado. Teve largura média de 8,1 pontos, de 5% a 50% apurado, e conteve o resultado em todas as leituras menos a última, quando já tinha largura zero e a diferença era de arredondamento. O custo: só ficou toda acima de 50% com 41,6% das seções. É larga no presidente porque a calibrei em 28 reproduções de 2018 e 2022, 26 delas de governador, onde o erro é maior.</p>
 <blockquote>
 <p><strong>Como cada faixa é feita.</strong> Dalmolin: o maior de três números, que são o percentil 95 do erro das 28 reproduções no mesmo % apurado, uma autovalidação ao vivo e a divergência entre os modelos. Mahlmeister: reamostragem de municípios (bootstrap), calibrada nas reproduções de 2022 e do 1º turno de 2026; o site cita 90% numa seção e 95% em outra, e os dados publicados são de 95% (<a href="https://projecao.2026elections.workers.dev">site do modelo</a>).</p>
 </blockquote>

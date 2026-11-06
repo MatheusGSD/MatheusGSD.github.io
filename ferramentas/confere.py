@@ -11,7 +11,7 @@ from playwright.sync_api import sync_playwright
 RAIZ = Path(__file__).resolve().parent.parent
 DIST = RAIZ / "dist"
 SAIDA = RAIZ / "ferramentas" / "_capturas"
-PAGINAS = ["/", "/projetos/", "/textos/", "/sobre/", "/textos/swing-simples-segundo-turno/", "/nao-existe/"]
+PAGINAS = ["/", "/projetos/", "/textos/", "/sobre/", "/textos/swing-simples-segundo-turno/", "/textos/enchente-e-voto/", "/nao-existe/"]
 PORTA = 4329
 
 
@@ -52,6 +52,11 @@ def main():
                     erros.clear()
                     pg.goto(base + caminho, wait_until="networkidle")
                     lat = pg.evaluate("document.documentElement.scrollWidth - innerWidth")
+                    # imagens loading="lazy" + decoding="async" saem em branco na captura de página inteira:
+                    # carrega e decodifica todas antes
+                    pg.evaluate("""Promise.all([...document.images].map(i => { i.loading = 'eager';
+                        return (i.complete ? Promise.resolve() : new Promise(r => { i.onload = i.onerror = r; }))
+                          .then(() => i.decode().catch(() => 0)); }))""")
                     nome = (caminho.strip("/").replace("/", "_") or "inicio")
                     pg.screenshot(path=str(SAIDA / f"{nome}_{larg}_{tema}.png"), full_page=True)
                     for h in pg.eval_on_selector_all("a[href]", "as => as.map(a => a.getAttribute('href'))"):

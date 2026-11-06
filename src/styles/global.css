@@ -1,6 +1,7 @@
 /* Tokens do artigo da apuração; acento verde-azulado (a cor do "método Dalmolin" nas figuras). */
+/* --ink-3 claro escurecido de #6f7682 (4,27:1 no fundo) para #666d79 (4,86:1): legendas, datas e notas em texto pequeno. */
 :root {
-  --bg: #f6f7f9; --surface: #ffffff; --ink: #14171c; --ink-2: #4a505b; --ink-3: #6f7682;
+  --bg: #f6f7f9; --surface: #ffffff; --ink: #14171c; --ink-2: #4a505b; --ink-3: #666d79;
   --rule: #dfe2e8; --accent: #0f8a7e; --accent-2: #0b6e64; --shade: rgba(20, 23, 28, .05);
   --f-display: "Archivo Variable", "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
   --f-body: "Source Sans 3 Variable", "Source Sans 3", "Segoe UI", system-ui, sans-serif;
@@ -71,6 +72,11 @@ p { margin: 0; }
 .prosa a { color: var(--accent-2); text-underline-offset: 3px; }
 .prosa .lede { font-size: 1.2rem; color: var(--ink-2); }
 .aviso { border-left: 3px solid var(--accent); background: var(--shade); padding: .7rem 1rem; font-size: .95rem; color: var(--ink-2); }
+.prosa ul { margin: 0; padding-left: 1.3rem; display: grid; gap: .55rem; }
+.prosa figure { margin: .5rem 0; display: grid; gap: .6rem; }
+.prosa figure img { width: 100%; border: 1px solid var(--rule); border-radius: 6px; background: #fff; }
+.prosa figcaption { font-size: .9rem; line-height: 1.45; color: var(--ink-3); }
+.prosa .notas { display: grid; gap: .5rem; font-size: .9rem; color: var(--ink-3); border-top: 1px solid var(--rule); padding-top: 1.1rem; margin-top: .8rem; }
 
 @media (max-width: 960px) {
   .grade { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 18px 6rem; }

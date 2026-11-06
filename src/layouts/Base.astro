@@ -12,8 +12,10 @@ interface Props {
   descricao?: string;
   atual?: "tudo" | "projeto" | "texto" | "sobre";
   imagem?: string;
+  /** Data de publicação de um texto: a página vira og:type=article, com article:published_time. */
+  publicado?: string;
 }
-const { titulo, descricao = SITE.bio, atual = "tudo", imagem = "/og.png" } = Astro.props;
+const { titulo, descricao = SITE.bio, atual = "tudo", imagem = "/og.png", publicado } = Astro.props;
 const tituloCompleto = titulo ? `${titulo} · ${SITE.nome}` : SITE.nome;
 const canonica = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -31,7 +33,8 @@ const canonica = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:title" content={titulo ?? SITE.nome}>
   <meta property="og:description" content={descricao}>
   <meta property="og:url" content={canonica}>
-  <meta property="og:type" content="website">
+  <meta property="og:type" content={publicado ? "article" : "website"}>
+  {publicado && <meta property="article:published_time" content={publicado}>}
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content={SITE.nome}>
   <meta property="og:image" content={new URL(imagem, Astro.site)}>

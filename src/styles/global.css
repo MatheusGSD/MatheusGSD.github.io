@@ -78,6 +78,28 @@ p { margin: 0; }
 .prosa figcaption { font-size: .9rem; line-height: 1.45; color: var(--ink-3); }
 .prosa .notas { display: grid; gap: .5rem; font-size: .9rem; color: var(--ink-3); border-top: 1px solid var(--rule); padding-top: 1.1rem; margin-top: .8rem; }
 
+/* ---------- ficha do Sobre ---------- */
+.ficha { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 1.8rem; padding: 1.2rem 1.3rem; background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 6px; font: 400 .8rem/1.6 var(--f-mono); }
+/* O line-height entra na proporção da célula em ferramentas/retrato.py (CELULA): mudar os dois juntos. */
+.arte { flex: none; margin: 0 auto; font: 400 7.5px/1.2 var(--f-mono); color: var(--ink); }
+.arte.escuro { display: none; }
+@media (prefers-color-scheme: dark) { .arte.claro { display: none; } .arte.escuro { display: block; } }
+.dados { flex: 1 1 17rem; min-width: 0; }
+.ficha dl { margin: 0; }
+.ficha dl div { display: flex; align-items: baseline; gap: 1ch; }
+/* Pontilhado no passo da fonte, sentado na linha de base; o tamanho se ajusta à largura da ficha. */
+.ficha dl div::after { content: ""; order: 1; flex: 1 1 2ch; height: 1.5px;
+  background: linear-gradient(90deg, var(--ink-3) 1.5px, transparent 1.5px) 0 0 / 1ch 100% repeat-x; }
+.ficha dt { flex: none; color: var(--accent-2); }
+.ficha dd { order: 2; margin: 0; min-width: 0; text-align: right; overflow-wrap: anywhere; }
+.ficha a { color: inherit; }
+.ficha a:hover { color: var(--accent-2); }
+.ficha .regua { display: flex; align-items: center; font: 500 .8rem/1.6 var(--f-mono); color: var(--ink-3); margin: 0; }
+.ficha h2.regua { color: var(--ink); margin-top: .7rem; }
+.ficha .regua::after { content: ""; flex: 1; margin-left: 1ch; border-top: 1px solid var(--rule); }
+.ficha .regua b { font-weight: 500; color: var(--accent-2); }
+
 @media (max-width: 960px) {
   .grade { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 18px 6rem; }
   .lado { position: static; min-height: 0; max-height: none; overflow: visible; padding: 2.4rem 0 1rem; }

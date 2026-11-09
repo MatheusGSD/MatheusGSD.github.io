@@ -1,14 +1,13 @@
 ---
 import Base from "../../layouts/Base.astro";
+import Ficha from "../../components/Ficha.astro";
 import { SITE } from "../../site";
-const redes = SITE.contatos.filter((c) => c.url.startsWith("http"));
 ---
 <Base titulo="Sobre" descricao={SITE.bio} atual="sobre">
   <article class="prosa">
     <h1>Sobre</h1>
+    <Ficha />
     <p class="lede">Sou Matheus Dalmolin. {SITE.bio}</p>
     <p>Na noite de 25 de outubro de 2026, acompanhei o 2º turno ao vivo com um <a href="https://apuracao.dalmolin.dev/">painel</a> que comparava cada município com as mesmas seções no 1º turno. Com 2% das urnas apuradas, ele projetava Lula com 51,79%, o mesmo número do resultado final. Contei como foi no artigo <a href="/textos/swing-simples-segundo-turno/">O swing simples basta para projetar um 2º turno?</a></p>
-    <h2>Contato</h2>
-    <p>E-mail: <a href="mailto:contato@dalmolin.dev">contato@dalmolin.dev</a>. Também estou no {redes.map((r, i) => <>{i > 0 && (i === redes.length - 1 ? " e no " : ", no ")}<a href={r.url} rel="me">{r.nome}</a></>)}.</p>
   </article>
 </Base>

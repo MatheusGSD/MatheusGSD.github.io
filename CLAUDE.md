@@ -20,6 +20,8 @@ Site pessoal de Matheus Dalmolin (projetos, textos, sobre; currículo e hobbies 
 ## Conferência
 `npm run build && python ferramentas/confere.py`: 6 páginas × (1280/390 px, claro/escuro), erros de console, rolagem lateral
 e links internos quebrados; capturas em `ferramentas/_capturas/`. `python ferramentas/og.py` refaz `public/og.png`.
+`python ferramentas/retrato.py [foto]` refaz `src/retrato.json`, o retrato em ASCII da ficha do Sobre (recorta o fundo
+com torch/transformers). A foto de origem fica em `ferramentas/_foto/retrato.png`, fora do git.
 A bio (`src/site.ts`) é a do X do usuário, escolhida por ele. Não usar o Lattes (desatualizado, segundo ele).
 
 ## Fora do main

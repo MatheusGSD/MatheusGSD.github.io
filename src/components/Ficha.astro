@@ -1,0 +1,45 @@
+---
+// Ficha do Sobre, à moda do neofetch: arte em ASCII (ferramentas/retrato.py) + dados tirados do próprio site.
+import { getCollection } from "astro:content";
+import { SITE, contagens, itens } from "../site";
+import retrato from "../retrato.json";
+
+const n = await contagens();
+const [recente] = await itens();
+const temas = new Map<string, number>();
+for (const p of await getCollection("projetos", (p) => !p.data.rascunho)) {
+  const t = p.data.tema.toLowerCase();
+  temas.set(t, (temas.get(t) ?? 0) + 1);
+}
+const porTema = [...temas].sort((a, b) => b[1] - a[1]).map(([t, q]) => `${t} ${q}`).join(" · ");
+const contatos = SITE.contatos.map((c) =>
+  c.url.startsWith("mailto:")
+    ? { rotulo: "E-mail", valor: c.nome, url: c.url, rel: undefined }
+    : { rotulo: c.nome, valor: c.url.split("/").filter(Boolean).at(-1), url: c.url, rel: "me" },
+);
+---
+<section class="ficha" aria-label="Ficha">
+  <pre class="arte claro" role="img" aria-label={retrato.descricao}>{retrato.claro}</pre>
+  <pre class="arte escuro" role="img" aria-label={retrato.descricao}>{retrato.escuro}</pre>
+  <div class="dados">
+    <p class="regua"><b>matheus</b>@<b>dalmolin.dev</b></p>
+    <dl>
+      <div><dt>Construo</dt><dd>ferramentas com IA</dd></div>
+      <div><dt>Analiso</dt><dd>dados públicos</dd></div>
+      <div><dt>Linguagens</dt><dd>Python, JavaScript, HTML</dd></div>
+      <div><dt>Este site</dt><dd>Astro, estático</dd></div>
+      <div><dt>No ar desde</dt><dd>6 nov 2026</dd></div>
+    </dl>
+    <h2 class="regua">Publicado</h2>
+    <dl>
+      <div><dt>Projetos</dt><dd>{n.projetos}</dd></div>
+      <div><dt>Textos</dt><dd>{n.textos}</dd></div>
+      <div><dt>Temas</dt><dd>{porTema}</dd></div>
+      <div><dt>Último</dt><dd><a href={recente.url}>{recente.titulo}</a></dd></div>
+    </dl>
+    <h2 class="regua">Contato</h2>
+    <dl>
+      {contatos.map((c) => <div><dt>{c.rotulo}</dt><dd><a href={c.url} rel={c.rel}>{c.valor}</a></dd></div>)}
+    </dl>
+  </div>
+</section>

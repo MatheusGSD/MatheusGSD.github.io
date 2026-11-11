@@ -1,6 +1,6 @@
 ---
 titulo: "Retrato em ASCII"
-resumo: "Sua foto vira um retrato desenhado com caracteres, como num terminal. O recorte do fundo roda no navegador: a foto não sai do aparelho."
+resumo: "Sua foto vira um retrato desenhado com caracteres ou escrito com um texto: seu, um poema ou um que a IA escreve no seu computador. A foto não sai do aparelho."
 tema: Ferramentas
 data: 2026-11-09
 url: https://dalmolin.dev/retrato-ascii/
